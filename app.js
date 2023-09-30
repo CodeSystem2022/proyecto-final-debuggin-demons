@@ -5,6 +5,7 @@ const dotenv = require("dotenv"); // Acceder a las variables de entorno
 
 
 const userRouter =  require("./routes/usuariosRoutes")
+const compraRouter =  require("./routes/comprasRoutes")
 
 // Modelo - Usuarios
 const User = require("./models/userModel")
@@ -17,6 +18,7 @@ const app = express();
 // Le digo al servidos que trabaje con archivos JSON.
 app.use(express.json());
 app.use("/", userRouter);
+app.use("/", compraRouter);
 
 // Definimos el Puerto por el que va a estar ecuchando el servidor
 const port = process.env.PORT || 3000;
@@ -31,9 +33,6 @@ app.get("/", (req, res) => {
 app.get("/videojuegos", (req, res) => {
   res.send("Lista de videojuegos");
 });
-
-
-
 
 // Conexion a la Base de datos -  Con Mongoose
 mongoose
