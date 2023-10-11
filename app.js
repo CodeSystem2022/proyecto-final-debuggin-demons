@@ -8,6 +8,12 @@ app.get("/", (req, res) => {
 app.get("/videojuegos", (req, res) => {
   res.send("Lista de videojuegos");
 });
+
+// Ruta del carrito
+const carritoRoutes = require('./routes/carrito');
+// Usa las rutas del carrito
+app.use('/carrito', carritoRoutes);
+
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
