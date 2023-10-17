@@ -17,3 +17,11 @@ body {
   color: #fff;
 
 }
+
+.container-form {
+  width: 90% ;
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+  transition: all .5s ease-out;
+}
