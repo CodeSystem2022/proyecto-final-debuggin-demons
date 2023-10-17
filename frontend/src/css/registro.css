@@ -54,4 +54,11 @@ body {
 .message button:hover {
   background-color: #6464f8;
 }
+
+.formulario {
+  width: 400px;
+  padding: 1rem;
+  margin: 2rem;
+  background-color: rgb(51, 51, 51, 0.602);
+  text-align: center;
 }
