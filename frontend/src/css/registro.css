@@ -25,3 +25,33 @@ body {
   justify-content: space-around;
   transition: all .5s ease-out;
 }
+
+.welcome-back {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.message h2 {
+  font-size: 1.7rem;
+  padding: 1rem 0;
+}
+
+.message button {
+  padding: 1rem;
+  font-weight: 400;
+  background-color: #4a4aee;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: .9rem;
+  margin-top: 2rem;
+  transition: all .3s ease-in;
+  color: #fff;
+}
+
+.message button:hover {
+  background-color: #6464f8;
+}
+}
