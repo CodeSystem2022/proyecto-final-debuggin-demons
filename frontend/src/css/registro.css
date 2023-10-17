@@ -18,6 +18,8 @@ body {
 
 }
 
+
+
 .container-form {
   width: 90% ;
   height: 90vh;
@@ -37,7 +39,16 @@ body {
   padding: 1rem 0;
 }
 
-.message button {
+.sign-up-btn a:link, a:visited, a:active {
+  text-decoration:none;
+}
+
+.sign-in-btn a:link, a:visited, a:active {
+  text-decoration:none;
+  color: #fff;
+   
+}
+.sign-up-btn, .sign-in-btn {
   padding: 1rem;
   font-weight: 400;
   background-color: #4a4aee;
@@ -48,10 +59,16 @@ body {
   font-size: .9rem;
   margin-top: 2rem;
   transition: all .3s ease-in;
-  color: #fff;
+   
 }
 
-.message button:hover {
+
+
+.sign-up-btn:hover {
+  background-color: #6464f8;
+}
+
+.sign-in-btn:hover {
   background-color: #6464f8;
 }
 
@@ -94,3 +111,37 @@ body {
   cursor: pointer;
 }
 
+.cuenta-gratis {
+  padding: 2rem 0;
+}
+
+.formulario input {
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 2rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: #fff thin solid ;
+  text-align: center;
+  outline: none;
+  padding: .2rem 0;
+  font-size: .9rem;
+  color: #fff;
+  
+}
+
+.formulario input[type="button"] {
+  width: 60%;
+  margin: auto;
+  border: solid thin #fff;
+  padding: .7rem;
+  border-radius: 2rem;
+  background-color: #fff;
+  font-weight: 600;
+  margin-top: 3rem;
+  font-size: .8rem;
+  cursor: pointer;
+  color: #222;
+
+}
