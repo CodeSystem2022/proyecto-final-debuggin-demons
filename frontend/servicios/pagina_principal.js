@@ -14,6 +14,7 @@ const getVideojuegos = async () => {
 
 const  getNuevos = async () => {
 
+
 }
 
 const getGeneros = async () => {
