@@ -20,10 +20,10 @@
       <div class="mesagge">
         <h2>Bienvenido a Demons Games</h2>
         <p>¿Ya eres miembro?</p>
-        <button class="sign-up-btn"><a href="/frontend/src/components/login.html" target="_self">Iniciar Sesion</a></button>
+        <a href="/frontend/src/components/login.html" target="_self" class="sign-up-btn">Iniciar Sesion</a>
       </div>
     </div>
-    <form class="formulario">
+    <form class="formulario" method="post" id="formulario-registro">
       <h2 class="create-account">Crear una cuenta</h2>
       <div class="iconos">
         <div class="border-icon">
@@ -37,15 +37,17 @@
         </div>
       </div>
       <p class="cuenta-gratis">Crear una cuenta gratis</p>
-      <input type="text" placeholder="Nombre">
-      <input type="text" placeholder="Apellido">
-      <input type="text" placeholder="Tel">
-      <input type="text" placeholder="Email">
-      <input type="text" placeholder="contraseña">
-      <input type="button" value="Registrarse">
+      <input type="text" placeholder="Nombre" name="nombre">
+      <input type="text" placeholder="Apellido" name="apellido">
+      <input type="text" placeholder="Tel" name="tel">
+      <input type="text" placeholder="Email" name="email">
+      <input type="text" placeholder="contraseña" name="password">
+      <button type="submit" class="btn-registrar">Registrarse</button>
     </form>
 
   </div>
-   
+
+  <script src="../js/registro.js"></script>
+</body>
 
 </html>
