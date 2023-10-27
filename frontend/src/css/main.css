@@ -10,6 +10,6 @@ h1{
 } 
 
 .fondo-videojuegos{
-    background-image: url("../assets/img/fondo.png");
+    background-image: url("../img/fondo_pagina_principal.png");
     min-height: 720px;
 }

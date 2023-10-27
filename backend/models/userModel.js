@@ -4,9 +4,6 @@ const userSchema = new mongoose.Schema({
   nombre: String,
   apellido: String,
   email: String,
-  dni: String,
-  fechaNac: Date,
-  nacionalidad: String,
   username: String,
   password: String,
 });

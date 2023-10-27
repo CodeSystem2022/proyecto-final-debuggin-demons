@@ -1,4 +1,6 @@
-const usersRepo = require("../repositories/users");
+const usersRepo = require("../repositories/usuariosRepository");
+
+
 const bcrypt = require("bcrypt");
 const getAll = async () => {
   const data = await usersRepo.getAll();

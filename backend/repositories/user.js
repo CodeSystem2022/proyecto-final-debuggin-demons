@@ -1,4 +1,4 @@
-const Models = require("../models/index");
+const User = require("../models/userModel");
 
 const getAll = async () => {
   const data = await Models.Users.findAll({
@@ -8,12 +8,12 @@ const getAll = async () => {
 };
 
 const create = async (body) => {
-  const data = await Models.Users.create(body);
+  const data = await User.create(body);
 
   return data;
 };
 const getById = async (id) => {
-  const user = await Models.Users.findByPk(id, {
+  const user = await User.findByPk(id, {
     attributes: {
       exclude: ["password"],
     },
@@ -34,12 +34,12 @@ const remove = async (id) => {
   return true;
 };
 
-const update = async (id, changes) => {
+const update = async (username, changes) => {
   const userUpdate = await User.update(
-    { firstName: changes.firstName, lastName: changes.lastName },
+    { nombre: changes.nombre, apellido: changes.apellido },
     {
       where: {
-        id: id,
+        username: username,
       },
     }
   );
