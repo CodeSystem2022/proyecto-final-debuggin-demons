@@ -46,3 +46,16 @@
      
   }
     
+  .sign-up-btn, .sign-in-btn {
+    padding: 1rem;
+    font-weight: 400;
+    background-color: #4a4aee;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: .9rem;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+     
+  }
