@@ -80,3 +80,10 @@
     padding: 2.7rem 0;
     font-size: 1.7rem;
   }
+
+  .iconos {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
