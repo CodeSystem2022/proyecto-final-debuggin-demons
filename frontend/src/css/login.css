@@ -127,3 +127,18 @@
     color: #fff;
     
   }
+
+  .formulario input[type="button"] {
+    width: 60%;
+    margin: auto;
+    border: solid thin #fff;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: #fff;
+    font-weight: 600;
+    margin-top: 3rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: #222;
+  
+  }
