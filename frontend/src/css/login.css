@@ -4,3 +4,17 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
   }
+
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/frontend/src/img/fondo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+  
+  }
+  
