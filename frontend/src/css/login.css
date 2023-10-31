@@ -87,3 +87,18 @@
     justify-content: space-around;
     margin: auto;
   }
+
+  .border-icon {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: solid thin #fff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all .3s ease-in;
+  
+  }
+  
