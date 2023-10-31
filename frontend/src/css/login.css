@@ -102,3 +102,7 @@
   
   }
   
+  .border-icon:hover {
+    background-color: #4a4aee;
+    cursor: pointer;
+  }
