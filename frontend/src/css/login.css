@@ -40,4 +40,9 @@
     text-decoration:none;
   }
   
+  .sign-in-btn a:link, a:visited, a:active {
+    text-decoration:none;
+    color: #fff;
+     
+  }
     
