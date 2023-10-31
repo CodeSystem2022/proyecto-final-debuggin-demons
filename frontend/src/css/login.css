@@ -59,3 +59,8 @@
     transition: all .3s ease-in;
      
   }
+
+  .sign-up-btn:hover {
+    background-color: #6464f8;
+  }
+  
