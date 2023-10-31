@@ -32,8 +32,12 @@
     text-align: center;
   }
 
-  .message h2 {
+.message h2 {
     font-size: 1.7rem;
     padding: 1rem 0;
   }  
+  .sign-up-btn a:link, a:visited, a:active {
+    text-decoration:none;
+  }
+  
     
