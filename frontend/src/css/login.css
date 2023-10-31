@@ -110,4 +110,20 @@
   .cuenta-gratis {
     padding: 2rem 0;
   }
+
   
+  .formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: #fff thin solid ;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: #fff;
+    
+  }
