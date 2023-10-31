@@ -24,4 +24,11 @@
     justify-content: space-around;
     transition: all .5s ease-out;
   }
+
+  
+.welcome-back {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
     
