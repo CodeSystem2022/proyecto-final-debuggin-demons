@@ -21,19 +21,13 @@
   cursor: pointer;
   color: #D2E885 !important;
 }
-a {
+
+.a-footer {
   color: #ffffff;
 }
-.home_page_sign_in_ctn {
-  text-align: center;
-  font-size: 15px;
-  color: #8f98a0;
-  font-family: "Motiva Sans", Sans-serif;
-  font-weight: 300;
-  font-weight: normal;
-}
-body.v6 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #c6d4df;
-  font-size: 12px;
-}
+
+.btn_green_white_innerfade:not(.btn_disabled):not(:disabled):not(.btn_active):not(.active):hover > span {
+    background: #a1bf07;
+    background: -webkit-linear-gradient( top, #a1bf07 5%, #80a006 95%);
+    background: linear-gradient( to bottom, #a1bf07 5%, #80a006 95%);
+  }
