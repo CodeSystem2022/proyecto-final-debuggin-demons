@@ -13,8 +13,6 @@ const getVideojuegos = async () => {
   return videojuegos;
 };
 
-const getNuevos = async () => {};
-
 const getGeneros = async () => {
   const generos = await fetch(
     `https://api.rawg.io/api/genres?key=${process.env.KEY_API}`,
@@ -28,6 +26,5 @@ const getGeneros = async () => {
 
 };
 
-const getCoincidenciaNombre = async () => {};
+const getVidejuegoById = (id) => {}
 
-const getOferats = async () => {};
