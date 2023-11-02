@@ -26,5 +26,15 @@ const getGeneros = async () => {
 
 };
 
-const getVidejuegoById = (id) => {}
+const getVidejuegoById = async (id) => {
+    const videojego = await fetch(
+    `https://api.rawg.io/api/games/${id}?key=${process.env.KEY_API}`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => data.results);
+  return videojego;
+}
 
