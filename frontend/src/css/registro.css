@@ -22,7 +22,7 @@ body {
 
 .container-form {
   width: 90% ;
-  height: 90vh;
+  height: 90%;
   display: flex;
   justify-content: space-around;
   transition: all .5s ease-out;
@@ -64,11 +64,12 @@ body {
 
 
 
-.sign-up-btn:hover {
+.formulario input[type="submit"]:hover {
   background-color: #6464f8;
+  color: #fff;
 }
 
-.sign-in-btn:hover {
+.sign-up-btn:hover {
   background-color: #6464f8;
 }
 
@@ -131,7 +132,7 @@ body {
   
 }
 
-.formulario input[type="button"] {
+.formulario input[type="submit"] {
   width: 60%;
   margin: auto;
   border: solid thin #fff;
