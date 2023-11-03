@@ -8,3 +8,10 @@ const login = async (body) => {
   if (!data) {
     throw new Error("Ocurrio un error al intntar Logearse");
   }
+  if (!bcrypt.compareSync(body.password, data.password)) {
+    throw new Error("Password invalido");
+  } else {
+    const user = new userModel(data);
+    return user;
+  }
+};
