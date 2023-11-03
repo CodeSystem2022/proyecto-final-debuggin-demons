@@ -15,3 +15,8 @@ const login = async (body) => {
     return user;
   }
 };
+
+
+module.exports = {
+  login
+};
