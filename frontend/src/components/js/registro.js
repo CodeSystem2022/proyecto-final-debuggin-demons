@@ -2,7 +2,7 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	username: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -32,8 +32,36 @@ const expresiones = {
 //     }
 // }
 
-const validarFormulario = () => {
-    console.log('Se ejecuto')
+const validarFormulario = (e) => {
+    switch (e.target.name) {
+        case "nombre":
+            if(expresiones.nombre.test(e.target.value)){
+                document.getElementById('grupo_nombre').classList.remove('formulario_grupo-incorrecto')
+            }else {
+                document.getElementById('grupo_nombre').classList.add('formulario_grupo-incorrecto')
+            }
+        break;
+
+        case "apellido":
+            
+        break;
+
+        case "username":
+           
+        break;
+
+        case "tel":
+            console.log('funciona');
+        break;
+
+        case "email":
+            console.log('funciona');
+        break;
+
+        case "contraseña":
+            
+        break;
+    }
 };
 
 inputs.forEach((input) => {
