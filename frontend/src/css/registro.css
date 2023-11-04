@@ -196,7 +196,7 @@ body {
   .container-form {
     
     /* padding: 0; */
-    z-index: 100;
+    /* z-index: 100; */
     display: block;
   }
     .welcome-back {
