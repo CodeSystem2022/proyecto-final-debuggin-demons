@@ -39,7 +39,7 @@ const validarFormulario = (e) => {
         break;
 
         case "email":
-            console.log('funciona');
+            validarCampo(expresiones.correo, e.target, 'email');
         break;
 
         case "contraseña":

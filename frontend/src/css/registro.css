@@ -190,25 +190,23 @@ a:active {
 
   body {
     height: 100%;
-    /* display: flex;
-   text-align: center;
-   align-items: center; */
-    display: block;
     background-image: url(/frontend/src/img/fondoquery.png);
-
     background-repeat: repeat;
 
   }
 
-  .container-form {
+  
 
-    padding: 0;
+  .container-form {
     z-index: 100;
     display: block;
+    align-items: center;
+    
   }
 
   .welcome-back {
     display: block;
+    text-align: center;
   }
 
 
