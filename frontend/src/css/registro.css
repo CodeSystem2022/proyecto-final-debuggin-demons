@@ -175,3 +175,34 @@ body {
 /* .formulario_grupo-incorrecto input::placeholder{
   color: #bb2929;
 } */
+
+
+/*Mediaqueries*/
+
+@media screen and (max-width: 800px) {
+
+  body {
+    height: 100%;
+   /* display: flex;
+   text-align: center;
+   align-items: center; */
+    background-image: url(/frontend/src/img/fondoquery.png);
+    background-image: repeating-linear-gradient();
+    background-repeat: repeat;
+  
+  }
+  
+  .container-form {
+    
+    /* padding: 0; */
+    z-index: 100;
+    display: block;
+  }
+    .welcome-back {
+      display: block;
+    }
+
+
+   
+ 
+}
