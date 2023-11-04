@@ -35,11 +35,7 @@ const expresiones = {
 const validarFormulario = (e) => {
     switch (e.target.name) {
         case "nombre":
-            if(expresiones.nombre.test(e.target.value)){
-                document.getElementById('grupo_nombre').classList.remove('formulario_grupo-incorrecto')
-            }else {
-                document.getElementById('grupo_nombre').classList.add('formulario_grupo-incorrecto')
-            }
+            validarCampo(expresiones.nombre, e.target, 'nombre');
         break;
 
         case "apellido":
@@ -63,6 +59,19 @@ const validarFormulario = (e) => {
         break;
     }
 };
+
+
+const validarCampo = (expresion, input, campo) => {
+    if(expresion.test(input.value)){
+        document.getElementById(`grupo_${campo}`).classList.remove('formulario_grupo-incorrecto')
+        document.querySelector(`#grupo_nombre .formulario_input_error`).classList.remove('formulario_input_error-activo')
+    }else {
+        document.getElementById(`grupo_${campo}`).classList.add('formulario_grupo-incorrecto')
+        document.querySelector(`#grupo_${campo} .formulario_input_error`).classList.add('formulario_input_error-activo')
+    }
+}
+
+
 
 inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
