@@ -6,7 +6,7 @@
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ body {
 
 
 .container-form {
-  width: 90% ;
+  width: 90%;
   height: 90%;
   display: flex;
   justify-content: space-around;
@@ -39,16 +39,22 @@ body {
   padding: 1rem 0;
 }
 
-.sign-up-btn a:link, a:visited, a:active {
-  text-decoration:none;
+.sign-up-btn a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
-.sign-in-btn a:link, a:visited, a:active {
-  text-decoration:none;
+.sign-in-btn a:link,
+a:visited,
+a:active {
+  text-decoration: none;
   color: #fff;
-   
+
 }
-.sign-up-btn, .sign-in-btn {
+
+.sign-up-btn,
+.sign-in-btn {
   padding: 1rem;
   font-weight: 400;
   background-color: #4a4aee;
@@ -59,7 +65,7 @@ body {
   font-size: .9rem;
   margin-top: 2rem;
   transition: all .3s ease-in;
-   
+
 }
 
 
@@ -124,19 +130,19 @@ body {
   margin-top: 2rem;
   background-color: transparent;
   border: none;
-  border-bottom: #fff thin solid ;
+  border-bottom: #fff thin solid;
   text-align: center;
   outline: none;
   padding: .2rem 0;
   font-size: .9rem;
   color: #fff;
-  
+
 }
 
 .formulario input[type="submit"] {
   width: 60%;
   margin: auto;
-  
+
   border: solid thin #fff;
   padding: .7rem;
   border-radius: 2rem;
@@ -170,7 +176,7 @@ body {
 
 /*Validacion*/
 .formulario_grupo-incorrecto input {
-  border-bottom: #bb2929 thin solid ;
+  border-bottom: #bb2929 thin solid;
 }
 
 /* .formulario_grupo-incorrecto input::placeholder{
@@ -184,26 +190,27 @@ body {
 
   body {
     height: 100%;
-   /* display: flex;
+    /* display: flex;
    text-align: center;
    align-items: center; */
+    display: block;
     background-image: url(/frontend/src/img/fondoquery.png);
-    background-image: repeating-linear-gradient();
+
     background-repeat: repeat;
-  
+
   }
-  
+
   .container-form {
-    
-    /* padding: 0; */
-    /* z-index: 100; */
+
+    padding: 0;
+    z-index: 100;
     display: block;
   }
-    .welcome-back {
-      display: block;
-    }
+
+  .welcome-back {
+    display: block;
+  }
 
 
-   
- 
+
 }
