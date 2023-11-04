@@ -7,7 +7,7 @@ const expresiones = {
     apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
+	telefono: /^\d{10,14}$/ // 7 a 14 numeros. // Valida numero de telefonos argentinos.
 }
 
 
@@ -35,7 +35,7 @@ const validarFormulario = (e) => {
         break;
 
         case "tel":
-            console.log('funciona');
+            validarCampo(expresiones.telefono, e.target, 'tel');
         break;
 
         case "email":
