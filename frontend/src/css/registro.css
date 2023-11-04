@@ -120,7 +120,8 @@ body {
   width: 70%;
   display: block;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
   background-color: transparent;
   border: none;
   border-bottom: #fff thin solid ;
@@ -135,6 +136,7 @@ body {
 .formulario input[type="submit"] {
   width: 60%;
   margin: auto;
+  
   border: solid thin #fff;
   padding: .7rem;
   border-radius: 2rem;
@@ -146,3 +148,30 @@ body {
   color: #222;
 
 }
+
+.formulario_grupo {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+
+.formulario_input_error {
+  font-size: 12px;
+  margin-bottom: 0;
+  padding-top: 0;
+  display: none;
+}
+
+.formulario_input_error-activo {
+  display: block;
+}
+
+
+/*Validacion*/
+.formulario_grupo-incorrecto input {
+  border-bottom: #bb2929 thin solid ;
+}
+
+/* .formulario_grupo-incorrecto input::placeholder{
+  color: #bb2929;
+} */
