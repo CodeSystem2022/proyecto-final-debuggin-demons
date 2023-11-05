@@ -9,3 +9,7 @@ const login = async (req, res, next) => {
     next(e);
   }
 };
+
+module.exports = {
+  login
+}
