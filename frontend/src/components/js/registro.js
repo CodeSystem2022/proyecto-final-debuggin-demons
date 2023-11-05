@@ -18,7 +18,14 @@ const expresiones = {
 //Expresion para nombres y apellidos
 //^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$
 
-
+const campos = {
+    nombre: false,
+    apellido: false,
+    username: false,
+    tel: false,
+    email: false,
+    contraseña: false
+}
 
 const validarFormulario = (e) => {
     switch (e.target.name) {
@@ -53,9 +60,11 @@ const validarCampo = (expresion, input, campo) => {
     if(expresion.test(input.value)){
         document.getElementById(`grupo_${campo}`).classList.remove('formulario_grupo-incorrecto')
         document.querySelector(`#grupo_${campo} .formulario_input_error`).classList.remove('formulario_input_error-activo')
+        campos[campo] = true;
     }else {
         document.getElementById(`grupo_${campo}`).classList.add('formulario_grupo-incorrecto')
         document.querySelector(`#grupo_${campo} .formulario_input_error`).classList.add('formulario_input_error-activo')
+        campos[campo] = false;
     }
 }
 
@@ -69,4 +78,8 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) =>  {
     e.preventDefault();
+
+    if (campos.nombre && campos.apellido && campos.username &&  campos.tel &&  campos.email &&  campos.contraseña) {
+        formulario.reset();
+    }
 });
