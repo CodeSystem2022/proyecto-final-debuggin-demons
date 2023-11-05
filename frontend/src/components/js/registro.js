@@ -43,7 +43,7 @@ const validarFormulario = (e) => {
         break;
 
         case "contraseña":
-            
+            validarCampo(expresiones.password, e.target, 'contraseña');
         break;
     }
 };
