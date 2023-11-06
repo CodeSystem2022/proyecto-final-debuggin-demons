@@ -4,6 +4,10 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 6000000s, color 0s 6000000s;
+}
 
 body {
   height: 100%;
