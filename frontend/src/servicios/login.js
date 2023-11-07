@@ -13,3 +13,15 @@ const  login= async () => {
         }),
         mode: "no-cors",
       };
+
+    const response = await fetch("http://localhost:3000/auth/login", options);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    localStorage.setItem("user", response.json());
+    console.log(response.json);
+  } catch (error) {
+    console.error(error);
+  }
+}
