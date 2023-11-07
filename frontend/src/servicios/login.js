@@ -25,3 +25,6 @@ const  login= async () => {
     console.error(error);
   }
 }
+
+const boton = document.querySelector("#btn-login");
+boton.addEventListener("click", login);
