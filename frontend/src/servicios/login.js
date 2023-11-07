@@ -7,3 +7,9 @@ const  login= async () => {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          username: inputUsername,
+          password: inputPassword,
+        }),
+        mode: "no-cors",
+      };
