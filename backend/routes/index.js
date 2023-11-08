@@ -13,3 +13,6 @@ router.use('/carrito', carritoRouter);
 router.use("/compras", compraRouter);
 router.use('/metodos-de-pago', metodosDePagoRouter);
 router.use('/user', userRouter);
+
+
+module.exports = router;
