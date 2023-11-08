@@ -3,4 +3,163 @@ let videojuegosEnCarrito = [];
 
 const contenedorCarrito = document.querySelector(".carrito-smart");
 
+const mostrarCarrito = (videojuegosEnCarrito) => {
+  
+  videojuegosEnCarrito.forEach((videojuego) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.classList.add("shadow-0");
+    card.classList.add("border");
+    card.classList.add("rounded-3");
 
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    const row = document.createElement("div");
+    row.classList.add("row");
+
+    const imageColumn = document.createElement("div");
+    imageColumn.classList.add("col-md-12");
+    imageColumn.classList.add("col-lg-3");
+    imageColumn.classList.add("col-xl-3");
+    imageColumn.classList.add("mb-4");
+    imageColumn.classList.add("mb-lg-0");
+
+    const productInformationColumn = document.createElement("div");
+    productInformationColumn.classList.add("col-md-6");
+    productInformationColumn.classList.add("col-lg-6");
+    productInformationColumn.classList.add("col-xl-6");
+
+    const priceAndButtonsColumn = document.createElement("div");
+    priceAndButtonsColumn.classList.add("col-md-6");
+    priceAndButtonsColumn.classList.add("col-lg-3");
+    priceAndButtonsColumn.classList.add("col-xl-3");
+    priceAndButtonsColumn.classList.add("border-sm-start-none");
+    priceAndButtonsColumn.classList.add("border-start");
+
+    const image = document.createElement("img");
+    image.classList.add("w-100");
+    image.src = videojuego.data.background_image;
+    imageColumn.appendChild(image);
+
+    const productTitle = document.createElement("h5");
+    productTitle.textContent = videojuego.data.name;
+    productInformationColumn.appendChild(productTitle);
+
+    const rating = document.createElement("div");
+    rating.classList.add("d-flex");
+    rating.classList.add("flex-row");
+
+    for (let i = 0; i < 4; i++) {
+      const star = document.createElement("i");
+      star.classList.add("fa");
+      star.classList.add("fa-star");
+      star.classList.add("text-danger");
+      rating.appendChild(star);
+    }
+
+    const reviewCount = document.createElement("span");
+    reviewCount.textContent = videojuego.data.rating;
+    rating.appendChild(reviewCount);
+
+    productInformationColumn.appendChild(rating);
+
+    const productDescription = document.createElement("div");
+    productDescription.classList.add("mt-1");
+    productDescription.classList.add("mb-0");
+    productDescription.classList.add("text-muted");
+    productDescription.classList.add("small");
+
+    let generos = [];
+    videojuego.genres.forEach((genero) => generos.push(genero));
+    let tags = [];
+    videojuego.tags.forEach((tag) => tags.push(tag));
+
+    const productFeatures = [
+      videojuego.data.released,
+      generos.join(" "),
+      tags.join(" "),
+    ];
+    for (let i = 0; i < productFeatures.length; i++) {
+      const productFeature = document.createElement("span");
+      productFeature.textContent = productFeatures[i];
+
+      if (i < productFeatures.length - 1) {
+        const separator = document.createElement("span");
+        separator.textContent = " • ";
+        productDescription.appendChild(separator);
+      }
+
+      productDescription.appendChild(productFeature);
+    }
+
+    productInformationColumn.appendChild(productDescription);
+
+    const price = document.createElement("h4");
+    price.classList.add("mb-1");
+    price.classList.add("me-1");
+    price.textContent = "$" + videojuego.data.precio;
+    priceAndButtonsColumn.appendChild(price);
+
+    const oldPrice = document.createElement("span");
+    oldPrice.classList.add("text-danger");
+    oldPrice.textContent = `<s>${videojuego.data.precio * 1.17}</s>`;
+    priceAndButtonsColumn.appendChild(oldPrice);
+
+    const freeShipping = document.createElement("h6");
+    freeShipping.classList.add("text-success");
+    freeShipping.textContent = "Mejor Precio";
+    priceAndButtonsColumn.appendChild(freeShipping);
+
+    const detailsButton = document.createElement("button");
+    detailsButton.classList.add("btn");
+    detailsButton.classList.add("btn-primary");
+    detailsButton.classList.add("btn-sm");
+    detailsButton.textContent = "Ver más";
+    priceAndButtonsColumn.appendChild(detailsButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn");
+    deleteButton.classList.add("btn-outline-danger");
+    deleteButton.classList.add("btn-sm");
+    deleteButton.textContent = "Quitar";
+    priceAndButtonsColumn.appendChild(deleteButton);
+
+    row.appendChild(imageColumn);
+    row.appendChild(productInformationColumn);
+    row.appendChild(priceAndButtonsColumn);
+
+    cardBody.appendChild(row);
+
+    card.appendChild(cardBody);
+
+    contenedorCarrito.appendChild(card);
+    const elemento = document.createElement("div");
+    const pTag = document.createElement("p");
+    const nombre = videojuego.name;
+    pTag.innerHTML = nombre;
+    elemento.appendChild(pTag);
+    contenedorCarrito.appendChild(elemento);
+  });
+};
+
+
+const obtenerInformacionUnJuego = async (id) => {
+  await axios.get(`https://api.rawg.io/api/games/${id}?key=${key_api_carrito}`)
+    .then((response) => response.data )
+    .then( data=> videojuegosEnCarrito.push(data))
+    .catch((error) => console.error(error));
+};
+
+const obtenerVidejuegosCarrito = async () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user !== null) {
+    const carrito = user.carrito;
+    for(const videojuego of carrito){
+      await obtenerInformacionUnJuego(videojuego);
+    };
+  }
+};
+
+obtenerVidejuegosCarrito()
+mostrarCarrito(videojuegosEnCarrito);
