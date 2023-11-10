@@ -1,4 +1,5 @@
 const User = require("../models/user");
+
 const getOne = async (username) => {
     const user = await User.findOne({ username });
     return user;
@@ -13,3 +14,4 @@ module.exports = {
     getOne,
     findByUsername,
 };
+
