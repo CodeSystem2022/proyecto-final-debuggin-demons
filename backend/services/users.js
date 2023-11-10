@@ -1,22 +1,16 @@
-const usersRepo = require("../repositories/user");
-const userModel = require("../models/user")
-const bcrypt = require("bcrypt");
 
-
-const login = async (body) => {
-  const data = await usersRepo.findByUsername(body.username);
-  if (!data) {
-    throw new Error("Ocurrio un error al intntar Logearse");
-  }
-  if (!bcrypt.compareSync(body.password, data.password)) {
-    throw new Error("Password invalido");
-  } else {
-    const user = new userModel(data);
+const User = require("../models/user");
+const getOne = async (username) => {
+    const user = await User.findOne({ username });
     return user;
-  }
 };
 
+const findByUsername = async (username) => {
+    const data = await User.findOne({ username });
+    return data;
+};
 
 module.exports = {
-  login
+    getOne,
+    findByUsername,
 };
