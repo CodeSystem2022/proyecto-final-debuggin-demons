@@ -1,24 +1,16 @@
-const getVideojuegos = async () => {
-  let page = Math.floor(Math.random() * 20) + 1;
-  const videojuegos = await fetch(
-    `https://api.rawg.io/api/games?key=4c8396ebdb16407383b027c49039f3f8&page=${page}`,
-    {
-      method: "GET",
-    }
-  )
-    .then((res) => res.json())
-    .then((data) => data.results);
-  return videojuegos;
-};
+const user = JSON.parse(localStorage.getItem("user"));
 
+if (user !== null) {
+  const globo = document.querySelector(".span-num-videjuegos-carrito");
+  const carrito = user.carrito;
+  globo.innerHTML = carrito.length;
+}
 
 const getGeneros = async () => {
-  const generos = await fetch(
-    `https://api.rawg.io/api/genres?key=4c8396ebdb16407383b027c49039f3f8`,
-    {
-      method: "GET",
-    }
-  )
+  const generos = await fetch(`https://api.rawg.io/api/genres?key=${key}`, {
+    method: "GET",
+    cors: "no-cors",
+  })
     .then((res) => res.json())
     .then((data) => data.results);
   return generos;
@@ -26,13 +18,23 @@ const getGeneros = async () => {
 };
 
 const obtenerInfoUnJuego = async(id) => {
-      const generos = await fetch(
-        `https://api.rawg.io/api/games/${id}?key=4c8396ebdb16407383b027c49039f3f8`,
-        {
-          method: "GET",
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => data.results);
-      return generos;
+  const { data, status } = await axios.get(`https://api.rawg.io/api/games/${id}?key=${key}`); 
+
+  if (status === 200) {
+    return data
+  }else{
+    console.error("Ocurrio un error al tratar de recuperar el vidojuego id: " + id);
+  }
 }
+
+const actualizarGlobo = () => {
+  if (user !== null) {
+    const globo = document.querySelector(".span-num-videjuegos-carrito");
+    const carrito = user.carrito;
+    globo.innerHTML = carrito.length;
+  } else {
+    console.error("Ocurrio un error al actualizar el globo");
+  }
+};
+
+actualizarGlobo();

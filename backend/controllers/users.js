@@ -1,5 +1,31 @@
-const usersService = require("../services/users");
-const modules = require("../modules/auth");
+const usuariosService = require("../services/users");
+
+
+const register = async (req, res, next) => {
+    try{
+        const user = usuariosService.save(req.body);
+        res.status(201).json(user)
+    }catch (error){
+        next(error);
+    }
+}
+const login = async (req, res, next) => {
+  try {
+    const user = await usuariosService.login(req.body);
+    res.status(200).json({"msg": "Usario logeado", user: user})
+  } catch (e) {
+    next(e);
+  }
+};
+
+const profile = async (req, res, next) => {
+  try {
+    const user = await usuariosService.getOne(req.params.user);
+    res.status(200).json({user});
+  } catch (e) {
+    next(e);
+  }
+};
 
 const getAll = async (req, res, next) => {
   try {
@@ -10,18 +36,6 @@ const getAll = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
-  try {
-    const jwt = await usersService.login(req.body);
-    if (!jwt) {
-      res.status(401).json({ ok: "false" });
-    } else {
-      res.status(200).json({ token: jwt });
-    }
-  } catch (e) {
-    next(e);
-  }
-};
 const create = async (req, res, next) => {
   try {
     const user = await usersService.create(req.body);
@@ -54,9 +68,9 @@ const update = async (req, res, next) => {
     next(e);
   }
 };
-const getById = async (req, res, next) => {
+const getByUsername = async (req, res, next) => {
   try {
-    const user = await usersService.getById(req.params.tokenizedUserId);
+    const user = await usersService.getById();
     res.status(200).json({
       user,
     });
@@ -65,11 +79,13 @@ const getById = async (req, res, next) => {
   }
 };
 
+
 module.exports = {
-  getAll,
-  login,
-  remove,
-  update,
-  create,
-  getById,
-};
+    getByUsername,
+    update,
+    remove,
+    create,
+    register,
+    login,
+    profile
+}

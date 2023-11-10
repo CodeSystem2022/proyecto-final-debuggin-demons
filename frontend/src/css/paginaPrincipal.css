@@ -1,0 +1,27 @@
+.card{
+    background: url(../img/back-card.jpg);
+    color: white;
+}
+
+.btn-generico{
+    background: linear-gradient(90deg, rgba(243, 202, 6, 1) 0%, rgba(234, 107, 59, 1) 100%);
+    color: #fff;
+}
+.btn-add-to-cart{
+    color: #fff;
+    /* bottom: 3px; */
+
+}
+
+.txt-precio{
+    color: white;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+}

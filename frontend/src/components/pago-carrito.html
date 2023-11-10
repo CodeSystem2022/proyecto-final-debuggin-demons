@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/pago-carrito.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/pago-carrito.css">
+    <title>Pagos</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="../img/logo.png" height="25" alt="Logo" loading="lazy" />
+                </a>
+    
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="items_navbar"></ul>
+            </div>
+    
+            <div class="d-flex align-items-center gap-3">
+                <div>
+                    <a class="text-reset me-3" href="carrito.html">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                        <span class="span-num-videjuegos-carrito badge rounded-pill badge-notification bg-danger"></span>
+                    </a>
+                </div>
+    
+                <a href="./profile.html">
+                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                </a>
+    
+                <i class="fa-solid fa-power-off" data-bs-toggle="modal" data-bs-target="#modal-cerrar-session"
+                    id="end-session"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="contenedor">
+
+    <div class="card">
+        <div class="card-top border-bottom text-center">
+            <span id="logo">DD Games</span>
+        </div>
+        <div class="card-body mt-3">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="left border">
+                        <div class="row">
+                            <span class="header">Payment</span>
+                            <div class="icons">
+                                <img src="https://img.icons8.com/color/48/000000/visa.png" />
+                                <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                                <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+                            </div>
+                        </div>
+                        <form>
+                            <span>Nombre</span>
+                            <input placeholder="Nombre">
+                            <span>Card Number:</span>
+                            <input placeholder="Numero de Tarjeta">
+                            <div class="row">
+                                <div class="col-4"><span>Fecha de Expiración:</span>
+                                    <input placeholder="YY/MM">
+                                </div>
+                                <div class="col-4"><span>CVV:</span>
+                                    <input id="cvv">
+                                </div>
+                            </div>
+                            <input type="checkbox" id="save_card" class="align-left">
+                            <label for="save_card">Recordar mi tarjeta</label>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="right border">
+                        <div class="header">Resumen</div>
+                        <p class="cantidad-items-carrito"></p>
+
+                        <div class="contenedor-juegos" style="overflow-y: scroll; max-height: 330px;">
+                                    <div class="row item">
+                                    <div class="col-4 align-self-center"><img class="img-fluid"
+                                            src="https://i.imgur.com/79M6pU0.png"></div>
+                                    <div class="col-8">
+                                        <div class="row"><b>$ 26.99</b></div>
+                                        <div class="row text-muted">Be Legandary Lipstick-Nude rose</div>
+                                        <div class="row">Qty:1</div>
+                                    </div>
+                                    </div>
+                                    <div class="row item">
+                                    <div class="col-4 align-self-center"><img class="img-fluid"
+                                            src="https://i.imgur.com/79M6pU0.png"></div>
+                                    <div class="col-8">
+                                        <div class="row"><b>$ 26.99</b></div>
+                                        <div class="row text-muted">Be Legandary Lipstick-Nude rose</div>
+                                        <div class="row">Qty:1</div>
+                                    </div>
+                                    <div class="row item">
+                                        <div class="col-4 align-self-center"><img class="img-fluid"
+                                            src="https://i.imgur.com/79M6pU0.png"></div>
+                                    <div class="col-8">
+                                        <div class="row"><b>$ 26.99</b></div>
+                                        <div class="row text-muted">Be Legandary Lipstick-Nude rose</div>
+                                        <div class="row">Qty:1</div>
+                                    </div>
+                                    <div class="row item">
+                                        <div class="col-4 align-self-center"><img class="img-fluid"
+                                                src="https://i.imgur.com/79M6pU0.png"></div>
+                                        <div class="col-8">
+                                            <div class="row"><b>$ 26.99</b></div>
+                                            <div class="row text-muted">Be Legandary Lipstick-Nude rose</div>
+                                            <div class="row">Qty:1</div>
+                                        </div>
+                                </div>
+
+
+                                    <hr>
+                                    <div class="row lower">
+                                        <div class="col text-left">Subtotal</div>
+                                        <div class="col text-right subtotal">$ 46.98</div>
+                                    </div>
+                                    <div class="row lower">
+                                        <div class="col text-left"><b>Total a pagar</b></div>
+                                        <div class="col text-right "><b class="total-a-pagar"></b></div>
+                                    </div>
+                                    <div class="row lower">
+                                        <div class="col text-left"><a href="#"><u>Codigo de descuento</u></a></div>
+                                    </div>
+                                    <button class="btn">Pagar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+    <footer class="bg-dark text-center text-white">
+        <div class="container p-4">
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://facebook.com" role="button"><i
+                        class="bi bi-facebook"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://twitter.com" role="button"><i
+                        class="bi bi-twitter-x"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://google.com" role="button"><i
+                        class="bi bi-google"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://instagram.com" role="button"><i
+                        class="bi bi-instagram"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://linkedin.com" role="button"><i
+                        class="bi bi-linkedin"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://github.com" role="button"><i
+                        class="bi bi-github"></i></a>
+            </section>
+    
+            <section class="">
+                <form action="">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <a class="btn-generico btn-footer-inicio-sesion btn_border_2px btn_medium a-footer"
+                                    href="./login.html">
+                                    <span>Iniciar sesión</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+    
+            <section class="mb-4">
+                O <a class="a-footer" href="./register.html">regístrate</a> y únete a
+                Debugging Demons VideoGames de forma gratuita
+            </section>
+    
+            <section class="">
+                <div>Todos los precios incluyen IVA (donde sea aplicable).&nbsp;&nbsp;
+                    <a class="a-footer" href="./pago-carrito.html" target="_blank" rel="">Acerca de</a>
+                    &nbsp; | &nbsp;
+                    <a class="a-footer" href="./contacto.html" target="_blank" rel="">Contacto</a>
+                </div>
+            </section>
+        </div>
+    
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white a-footer" href="https://index.com/">Debugging Demons</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

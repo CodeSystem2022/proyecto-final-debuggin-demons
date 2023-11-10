@@ -27,17 +27,25 @@
             </div>
             <p class="cuenta-gratis">¿Aun no tienes cuenta?</p>
     
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="contraseña">
-            <input type="button" value="Iniciar Sesion">
+            <input id="input-username-login" type="text" placeholder="Username">
+            <input id="input-password-login"  type="password" placeholder="contraseña">
+            <input id="btn-login" type="button" value="Iniciar Sesion">
           </form>
           <div class="welcome-back">
       <div class="mesagge">
         <h2>Bienvenido de nuevo</h2>
         <p>Si aun no tienes cuenta por favor registrese aqui</p>
-        <button class="sign-in-btn"><a href="/frontend/src/components/registro.html" target="_self">Registrarse</a></button>
+        <button class="sign-in-btn"><a href="../components/registro.html" target="_self">Registrarse</a></button>
       </div>
     </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../servicios/login.js"></script>
+
+    <script>
+      const boton = document.querySelector("#btn-login");
+      boton.addEventListener("click", login);
+    </script>
+    
 </body>
 </html>

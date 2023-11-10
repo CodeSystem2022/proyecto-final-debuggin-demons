@@ -5,12 +5,19 @@
   font-family: 'Roboto', sans-serif;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 6000000s, color 0s 6000000s;
+}
+
 body {
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/frontend/src/img/fondo.jpg);
+    background-image: linear-gradient(to bottom,
+          #280e5d,
+          #0000000A), url(/frontend/src/img/logo-portada-sm.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,8 +28,8 @@ body {
 
 
 .container-form {
-  width: 90% ;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
   display: flex;
   justify-content: space-around;
   transition: all .5s ease-out;
@@ -39,16 +46,22 @@ body {
   padding: 1rem 0;
 }
 
-.sign-up-btn a:link, a:visited, a:active {
-  text-decoration:none;
+.sign-up-btn a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
-.sign-in-btn a:link, a:visited, a:active {
-  text-decoration:none;
+.sign-in-btn a:link,
+a:visited,
+a:active {
+  text-decoration: none;
   color: #fff;
-   
+
 }
-.sign-up-btn, .sign-in-btn {
+
+.sign-up-btn,
+.sign-in-btn {
   padding: 1rem;
   font-weight: 400;
   background-color: #4a4aee;
@@ -59,16 +72,17 @@ body {
   font-size: .9rem;
   margin-top: 2rem;
   transition: all .3s ease-in;
-   
+
 }
 
 
+
+.formulario input[type="submit"]:hover {
+  background-color: #6464f8;
+  color: #fff;
+}
 
 .sign-up-btn:hover {
-  background-color: #6464f8;
-}
-
-.sign-in-btn:hover {
   background-color: #6464f8;
 }
 
@@ -119,21 +133,23 @@ body {
   width: 70%;
   display: block;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
   background-color: transparent;
   border: none;
-  border-bottom: #fff thin solid ;
+  border-bottom: #fff thin solid;
   text-align: center;
   outline: none;
   padding: .2rem 0;
   font-size: .9rem;
   color: #fff;
-  
+
 }
 
-.formulario input[type="button"] {
+.formulario input[type="submit"] {
   width: 60%;
   margin: auto;
+
   border: solid thin #fff;
   padding: .7rem;
   border-radius: 2rem;
@@ -146,12 +162,60 @@ body {
 
 }
 
-.btn-registrar{
-  padding: 1rem;
-  border-radius: 2rem;
+.formulario_grupo {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
-.btn-registrar:hover {
-  background-color: #ccc;
-  cursor: pointer;
+
+.formulario_input_error {
+  font-size: 12px;
+  margin-bottom: 0;
+  padding-top: 0;
+  display: none;
+  color: #bb2929;
+}
+
+.formulario_input_error-activo {
+  display: block;
+}
+
+
+/*Validacion*/
+.formulario_grupo-incorrecto input {
+  border-bottom: #bb2929 thin solid;
+}
+
+/* .formulario_grupo-incorrecto input::placeholder{
+  color: #bb2929;
+} */
+
+
+/*Mediaqueries*/
+
+@media screen and (max-width: 800px) {
+
+  body {
+    height: 100%;
+    background-image: url(/frontend/src/img/fondoquery.png);
+    background-repeat: repeat;
+
+  }
+
+
+
+  .container-form {
+    z-index: 100;
+    display: block;
+    align-items: center;
+
+  }
+
+  .welcome-back {
+    display: block;
+    text-align: center;
+  }
+
+
+
 }

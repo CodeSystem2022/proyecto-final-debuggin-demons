@@ -1,7 +1,7 @@
-const comprasService = require("../services/comprasService");
+const comprasService = require("../services/compras");
 
 
-const getAllCompras = async (req, res, next) => {
+const getAll = async (req, res, next) => {
 
     try{
         const listCompras = await comprasService.getAllCompras();
@@ -42,7 +42,7 @@ const update = async (req, res, next) => {
 
 
 module.exports = {
-    getAllCompras,
+    getAll,
     getOne,
     save,
     update

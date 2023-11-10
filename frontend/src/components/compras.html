@@ -1,86 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/frontend/src/css/Contacto.css">
+
+    <link rel="shortcut icon" href="../frontend/src/img/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./src/css/main.css" />
-    <title>Contacto</title>
+
+    <title>Mi compras</title>
 </head>
-
 <body>
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <a class="navbar-brand mt-2 mt-lg-0" href="/frontend/">
-                <img src="../img/logo.png" height="25" alt="Logo" loading="lazy" />
-            </a>
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="items_navbar"></ul>
-        </div>
-
-        <div class="d-flex align-items-center gap-3">
-            <div>
-                <a class="text-reset me-3" href="src/components/carrito.html">
-                    <i class="fas fa-shopping-cart text-white"></i>
-                    <span class="span-num-videjuegos-carrito badge rounded-pill badge-notification bg-danger"></span>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="../img/logo.png" height="25" alt="Logo" loading="lazy" />
                 </a>
+    
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="items_navbar"></ul>
             </div>
-
-            <a href="/frontend/src/components/profile.html">
-                <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-            </a>
-
-            <i class="fa-solid fa-power-off" data-bs-toggle="modal" data-bs-target="#modal-cerrar-session"
-                id="end-session"></i>
-        </div>
-    </div>
-</nav>
-
-    <div class="container contact-form">
-        <div class="contact-image">
-            <img src="/frontend/src/assets/img/pngwing.com.png" alt="logo_videojuego" />
-        </div>
-        <form method="post">
-            <h3>Dejanos un mensaje</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" name="txtName" class="form-control" placeholder="Nombre *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="txtEmail" class="form-control" placeholder="Email *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="txtPhone" class="form-control" placeholder="Numero de teléfono"
-                            value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="btnSubmit" class="btnContact" value="Mensaje" />
-                    </div>
+    
+            <div class="d-flex align-items-center gap-3">
+                <div>
+                    <a class="text-reset me-3" href="carrito.html">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                        <span class="span-num-videjuegos-carrito badge rounded-pill badge-notification bg-danger"></span>
+                    </a>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <textarea name="txtMsg" class="form-control" placeholder="Mensaje"
-                            style="width: 100%; height: 150px;"></textarea>
-                    </div>
-                </div>
+    
+                <a href="./profile.html">
+                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                </a>
+    
+                <i class="fa-solid fa-power-off" data-bs-toggle="modal" data-bs-target="#modal-cerrar-session"
+                    id="end-session"></i>
             </div>
-        </form>        
-    </div>
-
+        </div>
+    </nav>
+    
+    <div class="container py-5 compras"></div>
+    
     <div class="modal fade" id="modal-cerrar-session" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content modal-cerrar">
@@ -122,7 +98,7 @@
                         <div class="col-auto">
                             <p class="pt-2">
                                 <a class="btn-generico btn-footer-inicio-sesion btn_border_2px btn_medium a-footer"
-                                    href="/login.html">
+                                    href="./login.html">
                                     <span>Iniciar sesión</span>
                                 </a>
                             </p>
@@ -132,15 +108,15 @@
             </section>
     
             <section class="mb-4">
-                O <a class="a-footer" href="/register.html">regístrate</a> y únete a
+                O <a class="a-footer" href="./register.html">regístrate</a> y únete a
                 Debugging Demons VideoGames de forma gratuita
             </section>
     
             <section class="">
                 <div>Todos los precios incluyen IVA (donde sea aplicable).&nbsp;&nbsp;
-                    <a class="a-footer" href="/frontend/src/components/acerda_de.html" target="_blank" rel="">Acerca de</a>
+                    <a class="a-footer" href="./pago-carrito.html" target="_blank" rel="">Acerca de</a>
                     &nbsp; | &nbsp;
-                    <a class="a-footer" href="/frontend/src/components/Contacto.html" target="_blank" rel="">Contacto</a>
+                    <a class="a-footer" href="./contacto.html" target="_blank" rel="">Contacto</a>
                 </div>
             </section>
         </div>
@@ -159,8 +135,12 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     
+    
+
     <script src="../js/navbar.js"></script>
+    <script src="../js/compras.js"></script>
+    <script src="../servicios/compras.js"></script>
 
+    
 </body>
-
 </html>

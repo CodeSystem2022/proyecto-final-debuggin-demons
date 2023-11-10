@@ -1,4 +1,4 @@
-const compraRepository =  require("../repositories/comprasRepository")
+const compraRepository =  require("../repositories/compra")
 
 
 const getAllCompras = async (req) => {

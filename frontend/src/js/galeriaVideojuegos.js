@@ -1,33 +1,51 @@
-const construirGaleria = async () => {
-    //Obtengo la lista de videojuegos
+const key = "1813372f26e043d59e35a067ba3a439a";
+let videojuegos = [];
 
-    const videojuegos = await getVideojuegos();
-
-    const videojuegosAleatorios = [];
-
-    for (let i = 0; i < 5; i++) {
-      // Seleccionar un videojuego aleatorio de la lista
-      const videojuegoAleatorio =
-        videojuegos[Math.floor(Math.random() * videojuegos.length)];
-
-      // Añadir el videojuego aleatorio a la lista de videojuegos aleatorios
-      videojuegosAleatorios.push(videojuegoAleatorio);
+const getVideojuegos = async () => {
+  let page = Math.floor(Math.random() * 20) + 1;
+  const { data, status } = await axios.get(
+    `https://api.rawg.io/api/games?key=${key}&page=${page}`,
+    {
+      cors: "no-cors",
     }
+  );
 
-  // Crear el elemento del carrusel
+  if (status === 200) {
+    data.results.forEach((videojuego) => {
+      videojuegos.push(videojuego)
+    })
+    videojuegos.map(videojuego => {
+      videojuego.precio = (Math.random() * (24000 - 15000) + 15000).toFixed(2);
+    });
+
+    localStorage.setItem("videojuegos", JSON.stringify(videojuegos))
+
+  } else {
+    console.error("Ocurrio un error al obtener videojuegos.");
+  }
+};
+
+
+const construirGaleria = async () => {
+  const videojuegos = JSON.parse(localStorage.getItem("videojuegos"))
+
+  const videojuegosAleatorios = [];
+
+  for (let i = 0; i < 5; i++) {
+    const videojuegoAleatorio =
+      videojuegos[Math.floor(Math.random() * videojuegos.length)];
+    videojuegosAleatorios.push(videojuegoAleatorio);
+  }
+
   const carouselElement = document.createElement("div");
   carouselElement.id = "carouselExampleIndicators";
-  carouselElement.classList.add(
-    "carousel",
-    "slide",
-  );
-  carouselElement.setAttribute("data-bs-ride", "carousel");
+  carouselElement.classList.add("carousel", "slide");
+  carouselElement.setAttribute("data-bs-ride", "carousel", "carousel-fade");
+  carouselElement.setAttribute("data-interval", "2000");
 
-  // Crear los elementos de los indicadores
   const indicatorsElement = document.createElement("div");
   indicatorsElement.classList.add("carousel-indicators");
 
-  // Crear los indicadores individuales
   for (let i = 0; i < 5; i++) {
     const indicatorElement = document.createElement("button");
     indicatorElement.type = "button";
@@ -35,16 +53,10 @@ const construirGaleria = async () => {
       "data-bs-target",
       "#carouselExampleIndicators"
     );
-    indicatorElement.setAttribute(
-      "data-bs-slide-to",
-      `${i}`
-    );
+    indicatorElement.setAttribute("data-bs-slide-to", `${i}`);
     if (i === 0) {
-        indicatorElement.classList.add("active");
-        indicatorElement.setAttribute(
-          "aria-current",
-          true
-        );
+      indicatorElement.classList.add("active");
+      indicatorElement.setAttribute("aria-current", true);
     }
 
     indicatorElement.setAttribute("aria-label", `Slide ${i + 1}`);
@@ -52,12 +64,10 @@ const construirGaleria = async () => {
     indicatorsElement.appendChild(indicatorElement);
   }
 
-  // Crear el elemento de las diapositivas
   const slidesElement = document.createElement("div");
-  slidesElement.classList.add("carousel-inner");
+  slidesElement.classList.add("carousel-inner", "img-galeria");
 
-  // Crear las diapositivas individuales
-  for (let i = 0; i < videojuegosAleatorios.length ; i++) {
+  for (let i = 0; i < videojuegosAleatorios.length; i++) {
     const slideElement = document.createElement("div");
     slideElement.classList.add("carousel-item");
 
@@ -75,7 +85,6 @@ const construirGaleria = async () => {
     slidesElement.appendChild(slideElement);
   }
 
-  // Crear los controles del carrusel
   const prevControlElement = document.createElement("button");
   prevControlElement.classList.add("carousel-control-prev");
   prevControlElement.type = "button";
@@ -110,14 +119,13 @@ const construirGaleria = async () => {
   nextControlElement.appendChild(nextIconElement);
   nextControlElement.appendChild(nextLabelElement);
 
-  // Añadir los elementos al carrusel
   carouselElement.appendChild(indicatorsElement);
   carouselElement.appendChild(slidesElement);
   carouselElement.appendChild(prevControlElement);
   carouselElement.appendChild(nextControlElement);
 
-  // Añadir el carrusel al documento
   document.querySelector(".galeria").appendChild(carouselElement);
 };
 
+getVideojuegos();
 construirGaleria();

@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 
 const comprasSchema = new mongoose.Schema({
   username: String,
-  email: String,
-  dni: String,
   fechaCompra: Date,
   videoJuegos: [],
   precioTotal: Number,

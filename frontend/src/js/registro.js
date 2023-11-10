@@ -13,11 +13,4 @@ const registrar = () => {
      const email = formulario.elements["email"].value;
      const password = formulario.elements["password"].value;
 
-
-     console.log(nombre);
-     console.log(apellido);
-     console.log(tel);
-     console.log(email);
-     console.log(password);
-
 }

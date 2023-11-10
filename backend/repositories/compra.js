@@ -1,4 +1,4 @@
-const Compra = require("../models/compraModel")
+const Compra = require("../models/compra")
 
 
 // req -> [body(oculto), params(/), query(?)]

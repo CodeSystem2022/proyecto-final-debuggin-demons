@@ -1,5 +1,6 @@
 body{
-    background: linear-gradient(120deg, #00adee, #000000);
+    background: rgb(40, 14, 93);
+    background: linear-gradient(90deg, #280e5d 0%, #000000 100%);
 }
 
 h1{
@@ -10,6 +11,58 @@ h1{
 } 
 
 .fondo-videojuegos{
-    background-image: url("../img/fondo_pagina_principal.png");
-    min-height: 720px;
+    background-image: url("../img/logo-portada-sm.png");
+    min-height: 730px;
+    max-width: 1550px;
+}
+#end-session {
+    color: white;
+}
+
+#end-session:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.modal-cerrar{
+    margin-top: 7rem;
+    background-color: #333;
+    color: white;
+}
+
+.galeria{
+    display: flex;
+    justify-content: center;
+}
+.img-galeria{
+    max-width: 700px;
+    max-height: 400px;
+}
+
+.btn_medium>span,
+input.btn_medium {
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.btn_border_2px>span {
+    border-radius: 3px;
+}
+
+.a-footer {
+    color: #ffffff;
+}
+
+.btn-footer-inicio-sesion{
+    padding: 7px;
+    font-size: 15px;
+    line-height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+.btn-footer-inicio-sesion:hover {
+    color: #280e5d;
 }
