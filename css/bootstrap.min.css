@@ -10438,4 +10438,20 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.min.css.map */
+
+.name {
+        transition: transform 0.3s ease;
+    }
+.name:hover {
+        color: #007BFF; /* Cambia esto al color que prefieras */
+        cursor: pointer;
+        text-decoration: none;
+        transform: scale(1.1);
+    }
+
+.owl-carousel-image.img-fluid {
+      transition: transform 0.3s ease;
+    }
+.owl-carousel-image.img-fluid:hover {
+      transform: scale(1.05);
+    }
