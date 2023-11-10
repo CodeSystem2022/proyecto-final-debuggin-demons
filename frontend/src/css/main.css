@@ -1,0 +1,15 @@
+body{
+    background: linear-gradient(120deg, #00adee, #000000);
+}
+
+h1{
+    color: #C2E7D9;
+}
+.menu ul li {
+    list-style: none;
+} 
+
+.fondo-videojuegos{
+    background-image: url("../assets/img/fondo.png");
+    min-height: 720px;
+}
