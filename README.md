@@ -54,7 +54,13 @@ Integrantes:
 ```http
    DELETE carrito/:username/:videojuego
 ```
+    
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username`      | `string` | **Required**. Id user |
+| `videojuego`      | `string` | **Required**. Id videojuego |
 
+------------------------------------------------
 ## Instalacion
 
 Instalar dependencias del back con npm
@@ -64,9 +70,3 @@ Instalar dependencias del back con npm
   cd proyecto-final-debuggin-demons
   npm run start
 ```
-    
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username`      | `string` | **Required**. Id user |
-| `videojuego`      | `string` | **Required**. Id videojuego |
-
