@@ -8,6 +8,11 @@
       {
         "nested-interactive": "off"
       }
-    ]
+    ],
+    "axe/name-role-value": "off",
+    "no-inline-styles": "off",
+    "axe/text-alternatives": "off",
+    "axe/forms": "off",
+    "axe/parsing": "off"
   }
 }

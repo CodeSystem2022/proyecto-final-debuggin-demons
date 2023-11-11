@@ -79,17 +79,47 @@ inputs.forEach((input) => {
   input.addEventListener("blur", validarFormulario);
 });
 
-formulario.addEventListener("submit", (e) => {
+formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  if (
-    campos.nombre &&
-    campos.apellido &&
-    campos.username &&
-    campos.tel &&
-    campos.email &&
-    campos.contraseña
-  ) {
-    formulario.reset();
+  const body = {
+    nombre: document.querySelector("input#nombre").value,
+    apellido: document.querySelector("input#apellido").value,
+    email: document.querySelector("input#email").value,
+    username: document.querySelector("input#username").value,
+    password: document.querySelector("input#password").value,
+    age: 21,
+    fechaNacimiento: "02/11/2002",
+    carrito: [],
+  };
+
+  console.log(body);
+
+  const { status } = await axios.post(
+    "http://localhost:3000/auth/register",
+    body
+  );
+
+  if (status === 201) {
+    console.log("Usuario creado");
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/src/components/login.html";
   }
+
+
+
+  // if (
+  //   campos.nombre &&
+  //   campos.apellido &&
+  //   campos.username &&
+  //   campos.tel &&
+  //   campos.email &&
+  //   campos.contraseña
+  // ) {
+  //   formulario.reset();
+  // }
 });
+
+
+
+

@@ -1,5 +1,5 @@
 const key_api_carrito = "1813372f26e043d59e35a067ba3a439a";
-const user = JSON.parse(localStorage.getItem("user"));
+const userpp = JSON.parse(localStorage.getItem("user"));
 
 const contenedor = document.querySelector(".compras");
 
@@ -18,15 +18,13 @@ const obtenerInfoUnJuego = async (id) => {
   }
 };
 
-const mostrarCarrito = () => {
+const mostrarCompras = () => {
+  const comprasLocal = JSON.parse(localStorage.getItem("compras"));
+  comprasLocal.forEach((compra) => {
+    console.log(compra);
+  });
 
-const comprasLocal = JSON.parse(localStorage.getItem("compras"));
-console.log(comprasLocal);
-comprasLocal.forEach(compra => {console.log(compra);})
-  
-
-  comprasLocal.forEach(compra => {
-
+  comprasLocal.forEach((compra) => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.classList.add("shadow-0");
@@ -38,7 +36,6 @@ comprasLocal.forEach(compra => {console.log(compra);})
     cardBody.classList.add("card-body");
 
     const row = document.createElement("div");
-    row.classList.add("row");
 
     const productInformationColumn = document.createElement("div");
 
@@ -47,36 +44,56 @@ comprasLocal.forEach(compra => {console.log(compra);})
     productInformationColumn.appendChild(idCompra);
 
     const fechaCompra = document.createElement("h6");
-    fechaCompra.textContent = "Fecha de la compra: " + new Date(compra.fechaCompra).toDateString();
+    fechaCompra.textContent =
+    "Fecha de la compra: " + new Date(compra.fechaCompra).toDateString();
     productInformationColumn.appendChild(fechaCompra);
 
-    const usuario = document.createElement("p");
-    usuario.textContent = "Usuario: " + compra.username;
-    productInformationColumn.appendChild(usuario);
 
-    const dni = document.createElement("p");
-    dni.textContent = "DNI: " + compra.dni;
-    productInformationColumn.appendChild(dni);
+    const contendosColumna = document.createElement("div")
+    contendosColumna.classList = "row";
 
-    compra.videoJuegos.forEach(async (videjuego) => {
-      const videojuegocompeto = await obtenerInfoUnJuego(videjuego)
-      console.log(videojuegocompeto);
-      const videojuegoHTML = document.createElement("p");
-      videojuegoHTML.textContent = "Videojuego: " + videojuegocompeto.name;
-      productInformationColumn.appendChild(videojuegoHTML);
-    });
 
+    const contendosC1 = document.createElement("div")
+    contendosC1.classList = "col-6"
+    
     const precio = document.createElement("p");
     precio.textContent = "Precio: AR$" + compra.precioTotal;
-    productInformationColumn.appendChild(precio);
+    contendosC1.appendChild(precio);
 
     const formaDePago = document.createElement("p");
     formaDePago.textContent = "Forma De Pago: " + compra.formaPago;
-    productInformationColumn.appendChild(formaDePago);
+    contendosC1.appendChild(formaDePago);
+    
+    const usuario = document.createElement("p");
+    usuario.textContent = "Usuario: " + compra.username;
+    contendosC1.appendChild(usuario);
+
+
+    const dni = document.createElement("p");
+    dni.textContent = "DNI: " + compra.dni;
+    contendosC1.appendChild(dni);
+
+    const contendosC2 = document.createElement("div")
+     contendosC2.classList = "col-6";
+
+    compra.videoJuegos.forEach(async (videjuego) => {
+      const videojuegocompeto = await obtenerInfoUnJuego(videjuego);
+      const videojuegoHTML = document.createElement("p");
+      videojuegoHTML.textContent = "Videojuego: " + videojuegocompeto.name;
+      contendosC2.appendChild(videojuegoHTML);
+    });
 
     const descuento = document.createElement("p");
     descuento.textContent = "Descuento: %" + compra.descuento;
-    productInformationColumn.appendChild(descuento);
+    contendosC2.appendChild(descuento);
+
+
+
+
+    contendosColumna.appendChild(contendosC1)
+    contendosColumna.appendChild(contendosC2)
+
+    productInformationColumn.appendChild(contendosColumna);
 
     row.appendChild(productInformationColumn);
 
@@ -86,13 +103,12 @@ comprasLocal.forEach(compra => {console.log(compra);})
 
     contenedor.appendChild(card);
   });
-
 };
 
 const actualizarGlobo = () => {
-  if (user !== null) {
+  if (userpp !== null) {
     const globo = document.querySelector(".span-num-videjuegos-carrito");
-    const carrito = user.carrito;
+    const carrito = userpp.carrito;
     globo.innerHTML = carrito.length;
   } else {
     console.error("Ocurrio un error al actualizar el globo");
@@ -132,9 +148,9 @@ const obtenerComprasUsuario = async (username) => {
 };
 
 const init = () => {
-  obtenerComprasUsuario(user.username);
+  obtenerComprasUsuario(userpp.username);
 }
 
 init()
 actualizarGlobo();
-mostrarCarrito();
+mostrarCompras();

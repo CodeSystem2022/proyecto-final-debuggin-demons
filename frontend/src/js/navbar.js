@@ -1,11 +1,12 @@
-const usuario = JSON.parse(localStorage.getItem("user"));
+const usuarioNav = JSON.parse(localStorage.getItem("user"));
 const navOptions = document.querySelector("#items_navbar");
 
-if (!usuario) {
+if (!usuarioNav) {
 
   const registrationLink = document.createElement("a");
   registrationLink.classList.add("nav-link");
-  registrationLink.href = "src/components/registro.html";
+  registrationLink.href =
+    "http://127.0.0.1:5500/frontend/src/components/registro.html";
   registrationLink.textContent = "Registro";
 
   const loginLink = document.createElement("a");
@@ -33,12 +34,14 @@ if (!usuario) {
 
   const carritoNavLink = document.createElement("a");
   carritoNavLink.classList.add("nav-link");
-  carritoNavLink.href = "src/components/carrito.html";
+  carritoNavLink.href =
+    "http://127.0.0.1:5500/frontend/src/components/carrito.html";
   carritoNavLink.textContent = "Carrito";
 
   const comprasNavLink = document.createElement("a");
   comprasNavLink.classList.add("nav-link");
-  comprasNavLink.href = "src/components/compras.html";
+  comprasNavLink.href =
+    "http://127.0.0.1:5500/frontend/src/components/compras.html";
   comprasNavLink.textContent = "Compras";
   
   navItem.appendChild(carritoNavLink);
@@ -50,7 +53,7 @@ if (!usuario) {
     const acercDeLink = document.createElement("a");
     acercDeLink.classList.add("nav-link");
     acercDeLink.href =
-      "http://127.0.0.1:5500/frontend/src/components/acercaDe.html";
+      "http://127.0.0.1:5500/frontend/src/components/sobre.html";
     acercDeLink.textContent = "Acerca De";
 
     const contactoLink = document.createElement("a");
@@ -73,12 +76,13 @@ if (!usuario) {
 
 const salir = (e) => {
   e.preventDefault();
-  localStorage?.removeItem("user")
-  localStorage?.removeItem("carrito")
-  localStorage?.removeItem("metodos")
-  localStorage?.removeItem("compras")
-  localStorage?.removeItem("videojuegoAmostrar");
-  localStorage?.removeItem("videojuegos");
+  localStorage.removeItem("user")
+  localStorage.removeItem("carrito")
+  localStorage.removeItem("carritoCompleto")
+  localStorage.removeItem("metodos")
+  localStorage.removeItem("compras")
+  localStorage.removeItem("videojuegoAmostrar");
+  localStorage.removeItem("videojuegos");
   window.location.href = "http://localhost:5500/frontend/index.html";
 }
 

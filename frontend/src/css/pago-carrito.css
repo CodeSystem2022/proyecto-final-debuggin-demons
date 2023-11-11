@@ -138,10 +138,7 @@ input:focus::-webkit-input-placeholder {
     line-height: 2;
 }
 
-.btn {
-    background-color: rgb(23, 4, 189);
-    border-color: rgb(23, 4, 189);
-    color: white;
+.btn-generico-payment {
     width: 100%;
     font-size: 0.7rem;
     margin: 4vh 0 1.5vh 0;
@@ -182,4 +179,66 @@ input[type=checkbox] {
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center;
+}
+
+.thank-you-pop {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.thank-you-pop img {
+    width: 76px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.thank-you-pop h1 {
+    font-size: 42px;
+    margin-bottom: 25px;
+    color: #5C5C5C;
+}
+
+.thank-you-pop p {
+    font-size: 20px;
+    margin-bottom: 27px;
+    color: #5C5C5C;
+}
+
+.thank-you-pop h3.cupon-pop {
+    font-size: 25px;
+    margin-bottom: 40px;
+    color: #222;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px dashed #222;
+    clear: both;
+    font-weight: normal;
+}
+
+.thank-you-pop h3.cupon-pop span {
+    color: #03A9F4;
+}
+
+.thank-you-pop a {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 9px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    background-color: #8BC34A;
+    border-radius: 17px;
+}
+
+.thank-you-pop a i {
+    margin-right: 5px;
+    color: #fff;
+}
+
+#ignismyModal .modal-header {
+    border: 0px;
 }

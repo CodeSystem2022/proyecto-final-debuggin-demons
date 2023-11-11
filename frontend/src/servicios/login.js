@@ -1,21 +1,15 @@
 const key_api = "1813372f26e043d59e35a067ba3a439a";
 
-const obtenerMetodosDePago = async () => {
-  const { data, status } = await axios.get(
-    `http://localhost:3000/metodos-de-pago`
-  );
-  console.log(data);
-  if (status === 200) {
-    return data;
-  } else {
-    console.error("No se pudo obtener los metodos de pago");
-  }
-};
-
 const metodosDePagos = async () => {
-    const metodos = await obtenerMetodosDePago();
-    metodos = metodos.map((metodo) => metodo.metodo);
-    localStorage.setItem("metodos", JSON.stringify(metodos));
+    const { data, status } = await axios.get(
+      `http://localhost:3000/metodos-de-pago`
+    );
+    if (status === 200) {
+      localStorage.setItem("metodos", JSON.stringify(data))
+    } else {
+      console.error("No se pudo obtener los metodos de pago");
+    }
+
 }
 
 const login = async (e) => {
@@ -53,26 +47,30 @@ const obtenerInformacionUnJuego = async (id) => {
 
 const obtenerVidejuegosCarrito = async () => {
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userLog = JSON.parse(localStorage.getItem("user"));
 
-  if (user !== null) {
+  if (userLog !== null) {
+    const { data, status } = await axios.get(
+      `http://localhost:3000/carrito?username=${userLog.username}`
+    );
+    if (status == 200) {
+      if (data.length) {
+        localStorage.setItem("carrito", JSON.stringify(data));
+      }
+    }
 
-  const { data, status } = await axios.get(`http://localhost:3000/carrito?username=${user.username}`)
-  if (status == 200) {
-    if (data.length) {
-      localStorage.setItem("carrito", JSON.stringify(data));
-    };
-  }
-
-  let videojuegosEnCarrito = [];
-  for (const videojuego of data) {
-    const juego = await obtenerInformacionUnJuego(videojuego);
-    videojuegosEnCarrito.push(juego);
-  }
-  videojuegosEnCarrito.map(juego => {
-    juego.precio = (Math.random() * (24000 - 15000) + 15000).toFixed(2)
-  })
-  localStorage.setItem("carritoCompleto", JSON.stringify(videojuegosEnCarrito));
+    let videojuegosEnCarrito = [];
+    for (const videojuego of data) {
+      const juego = await obtenerInformacionUnJuego(videojuego);
+      videojuegosEnCarrito.push(juego);
+    }
+    videojuegosEnCarrito.map((juego) => {
+      juego.precio = (Math.random() * (24000 - 15000) + 15000).toFixed(2);
+    });
+    localStorage.setItem(
+      "carritoCompleto",
+      JSON.stringify(videojuegosEnCarrito)
+    );
   }
 };
 

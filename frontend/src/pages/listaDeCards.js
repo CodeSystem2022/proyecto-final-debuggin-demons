@@ -1,5 +1,5 @@
 const key_carrito = "1813372f26e043d59e35a067ba3a439a";
-let videojuegosCards;
+let videojuegosCards = [];
 
 const getVideojuegosParaCards = async () => {
   let page = Math.floor(Math.random() * 20) + 1;
@@ -26,12 +26,16 @@ const getVideojuegosParaCards = async () => {
 
 const construirCarousel = async () => {
 
+getVideojuegosParaCards();
+
 const videojuegosCards = JSON.parse(localStorage.getItem("videojuegos"));
 
 const contenedorCarousel = document.querySelector("#contenedor-carousel");
 
 
   let index = 0;
+
+  console.log(videojuegosCards);
 
   videojuegosCards.forEach((videojuego) => {
     const contenedor = document.createElement("div");
@@ -93,7 +97,7 @@ const contenedorCarousel = document.querySelector("#contenedor-carousel");
     button.classList.add("btn");
     button.classList.add("btn-add-to-cart");
     button.classList.add("btn-generico");
-    button.textContent = "Add to cart";
+    button.innerHTML = `Agregar <i class="bi bi-cart4"></i>`;
     button.href = "#!";
 
     button.addEventListener("click", bindAgregarItemCarrito);
@@ -110,34 +114,37 @@ const contenedorCarousel = document.querySelector("#contenedor-carousel");
   });
 };
 
-const bindAgregarItemCarrito = (e) => {
+const bindAgregarItemCarrito = async (e) => {
+  e.preventDefault();
   const boton = e.target;
   const id = boton.getAttribute("data-id");
-  agregarItemAlCarrito(id);
+    agregarItemAlCarrito(id);
 };
 
-const obtenerJuego = async (id) => {
-  const  { data, status} = await axios.get(`https://api.rawg.io/api/games/${id}?key=${key_carrito}`)
+const obtenerJuegoPorIDCard = async (id) => {
+  const { data, status } = await axios.get(
+    `https://api.rawg.io/api/games/${id}?key=${key_carrito}`
+  );
   if (status === 200) {
-    return data.results
+    return data;
   }
-;
 };
 
 const videojuegoAMostrar =async  (e) => {
   e.preventDefault();
   const elemento = e.target;
   const idABuscar = elemento.getAttribute("data-id");
-  const juego = await obtenerJuego(idABuscar);
-  const juegoStr = JSON.stringify(juego);
+  const juego = await obtenerJuegoPorIDCard(idABuscar);
+    const juegoStr = JSON.stringify(juego);
   localStorage?.removeItem("videojuegoAmostrar");
   localStorage.setItem("videojuegoAmostrar", juegoStr);
-  window.location.href ="/src/components/videojuego.html";
+  window.location.href =
+    "http://127.0.0.1:5500/frontend/src/components/videojuego.html";
 };
 
 
 const agregarItemAlCarrito = async (videojuego) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
 
   const body = {
     username: user.username,
@@ -153,10 +160,10 @@ const agregarItemAlCarrito = async (videojuego) => {
     }
   );
 
-  if (status === 200) {
+  if (status === 201) {
     localStorage.setItem("carrito", JSON.stringify(data));
     actualizarItemsCarrito(videojuego);
-  } else {
+      } else {
     console.log("Ocurrio un error al tratar de actualizar el carrito");
   }
 };
@@ -164,10 +171,10 @@ const agregarItemAlCarrito = async (videojuego) => {
 const actualizarItemsCarrito = async ( videojuego) => {
 
   let carritoActual = JSON.parse(localStorage.getItem("carrito"))
-  carritoActual.push(videojuego)
+    carritoActual.push(videojuego)
   localStorage?.removeItem("carrito");
   localStorage?.setItem("carrito", carritoActual);
-};
+  };
 
 getVideojuegosParaCards();
 construirCarousel();

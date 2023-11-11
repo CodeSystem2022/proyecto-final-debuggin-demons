@@ -17,7 +17,6 @@ const getVideojuegos = async () => {
     videojuegos.map(videojuego => {
       videojuego.precio = (Math.random() * (24000 - 15000) + 15000).toFixed(2);
     });
-
     localStorage.setItem("videojuegos", JSON.stringify(videojuegos))
 
   } else {
@@ -27,6 +26,7 @@ const getVideojuegos = async () => {
 
 
 const construirGaleria = async () => {
+  getVideojuegos();
   const videojuegos = JSON.parse(localStorage.getItem("videojuegos"))
 
   const videojuegosAleatorios = [];
@@ -127,5 +127,5 @@ const construirGaleria = async () => {
   document.querySelector(".galeria").appendChild(carouselElement);
 };
 
-getVideojuegos();
+
 construirGaleria();

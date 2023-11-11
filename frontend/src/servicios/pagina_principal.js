@@ -1,8 +1,8 @@
-const user = JSON.parse(localStorage.getItem("user"));
+const miuser = JSON.parse(localStorage.getItem("user"));
 
-if (user !== null) {
+if (miuser !== null) {
   const globo = document.querySelector(".span-num-videjuegos-carrito");
-  const carrito = user.carrito;
+  const carrito = miuser.carrito;
   globo.innerHTML = carrito.length;
 }
 
@@ -27,14 +27,14 @@ const obtenerInfoUnJuego = async(id) => {
   }
 }
 
-const actualizarGlobo = () => {
-  if (user !== null) {
+const actualizarEstadoCart = () => {
+  if (miuser !== null) {
     const globo = document.querySelector(".span-num-videjuegos-carrito");
-    const carrito = user.carrito;
+    const carrito = miuser.carrito;
     globo.innerHTML = carrito.length;
   } else {
     console.error("Ocurrio un error al actualizar el globo");
   }
 };
 
-actualizarGlobo();
+actualizarEstadoCart();

@@ -1,6 +1,6 @@
 const key_api_carrito = "1813372f26e043d59e35a067ba3a439a";
 const videojuegosEnCarrito = JSON.parse(localStorage.getItem("carritoCompleto"));
-const user = JSON.parse(localStorage.getItem("user"));
+const usuarioCarrito = JSON.parse(localStorage.getItem("user"));
 
 const contenedorCarrito = document.querySelector(".carrito-smart");
 
@@ -143,11 +143,9 @@ const mostrarCarrito = () => {
     row.appendChild(priceAndButtonsColumn);
 
     cardBody.appendChild(row);
-
     card.appendChild(cardBody);
-
-    
     contenedorCarrito.appendChild(card);
+    
   });
 
     let precioTotal = 0;
@@ -180,19 +178,10 @@ const mostrarCarrito = () => {
 };
 
 
-const actualizarGlobo = () => {
-  if (user !== null) {
-    const globo = document.querySelector(".span-num-videjuegos-carrito");
-    const carrito = user.carrito;
-    globo.innerHTML = carrito.length;
-  } else {
-    console.error("Ocurrio un error al actualizar el globo");
-  }
-};
-
-
-const obtenerJuego = async (id) => {
-  const { data, status } = await axios.get(`https://api.rawg.io/api/games/${id}?key=${key_api_carrito}`);
+const obtenerJuegoPorId = async (id) => {
+  const { data, status } = await axios.get(
+    `https://api.rawg.io/api/games/${id}?key=${key_api_carrito}`
+  );
   if (status === 200) {
     return data;
   }
@@ -204,7 +193,7 @@ const videojuegoAMostrar = async (e) => {
   const elemento = e.target;
   const idABuscar = elemento.getAttribute("data-id");
   console.log(idABuscar);
-  const juego = await obtenerJuego(idABuscar);
+  const juego = await obtenerJuegoPorId(idABuscar);
   const juegoStr = JSON.stringify(juego);
   localStorage?.removeItem("videojuegoAmostrar");
   localStorage.setItem("videojuegoAmostrar", juegoStr);
@@ -212,5 +201,4 @@ const videojuegoAMostrar = async (e) => {
 };
 
 
-actualizarGlobo();
 mostrarCarrito();
