@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../frontend/src/img/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <title>Mi compras</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand mt-2 mt-lg-0" href="http://127.0.0.1:5500/frontend/">
+                    <img src="../img/logo.png" height="25" alt="Logo" loading="lazy" />
+                </a>
+    
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="items_navbar"></ul>
+            </div>
+    
+            <div class="d-flex align-items-center gap-3">
+                <div>
+                    <a class="text-reset me-3" href="http://127.0.0.1:5500/frontend/src/components/carrito.html">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                        <span class="span-num-videjuegos-carrito badge rounded-pill badge-notification bg-danger"></span>
+                    </a>
+                </div>
+    
+                <a href="http://127.0.0.1:5500/frontend/src/components/profile.html">
+                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                </a>
+    
+                <i class="fa-solid fa-power-off" data-bs-toggle="modal" data-bs-target="#modal-cerrar-session"
+                    id="end-session"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container py-5 compras"></div>
+    
+    <div class="modal fade" id="modal-cerrar-session" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content modal-cerrar">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sing Out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Quiere cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="sing-out">SALIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-dark text-center text-white">
+        <div class="container p-4">
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://facebook.com" role="button"><i
+                        class="bi bi-facebook"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://twitter.com" role="button"><i
+                        class="bi bi-twitter-x"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://google.com" role="button"><i
+                        class="bi bi-google"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://instagram.com" role="button"><i
+                        class="bi bi-instagram"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://linkedin.com" role="button"><i
+                        class="bi bi-linkedin"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1 a-footer" href="https://github.com" role="button"><i
+                        class="bi bi-github"></i></a>
+            </section>
+    
+            <section class="">
+                <form action="">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <a class="btn-generico btn-footer-inicio-sesion btn_border_2px btn_medium a-footer"
+                                    href="./login.html">
+                                    <span>Iniciar sesión</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+    
+            <section class="mb-4">
+                O <a class="a-footer" href="./register.html">regístrate</a> y únete a
+                Debugging Demons VideoGames de forma gratuita
+            </section>
+    
+            <section class="">
+                <div>Todos los precios incluyen IVA (donde sea aplicable).&nbsp;&nbsp;
+                    <a class="a-footer" href="./pago-carrito.html" target="_blank" rel="">Acerca de</a>
+                    &nbsp; | &nbsp;
+                    <a class="a-footer" href="./contacto.html" target="_blank" rel="">Contacto</a>
+                </div>
+            </section>
+        </div>
+    
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white a-footer" href="https://index.com/">Debugging Demons</a>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    
+    
+
+    <script src="../js/navbar.js"></script>
+    <script src="../servicios/compras.js"></script>
+
+    
+</body>
+</html>

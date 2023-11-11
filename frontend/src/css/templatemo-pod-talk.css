@@ -37,7 +37,8 @@
 }
 
 body {
-  background-color: var(--white-color);
+      background: rgb(40, 14, 93);
+        background: linear-gradient(90deg, #280e5d 0%, #000000 100%);
   font-family: var(--body-font-family); 
 }
 
@@ -91,7 +92,7 @@ h6 {
 }
 
 p {
-  color: var(--p-color);
+  color: white;
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-light);
 }
@@ -239,7 +240,6 @@ main {
   SITE HEADER              
 -----------------------------------------*/
 .site-header {
-  background-image: url('../images/templatemo-wave-header.jpg'), linear-gradient(#348CD2, #FFFFFF);;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -465,7 +465,6 @@ main {
   CAROUSEL        
 -----------------------------------------*/
 .hero-section {
-  background-image: url('../images/templatemo-wave-banner.jpg'), linear-gradient(#348CD2, #FFFFFF);
   background-repeat: no-repeat;
   background-size: 108% 76%;
   background-position: top;

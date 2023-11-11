@@ -1,16 +1,19 @@
 const key_api_carrito = "1813372f26e043d59e35a067ba3a439a";
-let videojuegosEnCarrito = [];
+const videojuegosEnCarrito = JSON.parse(localStorage.getItem("carritoCompleto"));
+const usuarioCarrito = JSON.parse(localStorage.getItem("user"));
 
 const contenedorCarrito = document.querySelector(".carrito-smart");
 
-const mostrarCarrito = (videojuegosEnCarrito) => {
+const mostrarCarrito = () => {
   
   videojuegosEnCarrito.forEach((videojuego) => {
+
     const card = document.createElement("div");
     card.classList.add("card");
     card.classList.add("shadow-0");
     card.classList.add("border");
     card.classList.add("rounded-3");
+    card.classList.add("my-4");
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
@@ -39,11 +42,11 @@ const mostrarCarrito = (videojuegosEnCarrito) => {
 
     const image = document.createElement("img");
     image.classList.add("w-100");
-    image.src = videojuego.data.background_image;
+    image.src = videojuego.background_image;
     imageColumn.appendChild(image);
 
     const productTitle = document.createElement("h5");
-    productTitle.textContent = videojuego.data.name;
+    productTitle.textContent = videojuego.name;
     productInformationColumn.appendChild(productTitle);
 
     const rating = document.createElement("div");
@@ -59,7 +62,7 @@ const mostrarCarrito = (videojuegosEnCarrito) => {
     }
 
     const reviewCount = document.createElement("span");
-    reviewCount.textContent = videojuego.data.rating;
+    reviewCount.textContent = videojuego.rating;
     rating.appendChild(reviewCount);
 
     productInformationColumn.appendChild(rating);
@@ -71,12 +74,12 @@ const mostrarCarrito = (videojuegosEnCarrito) => {
     productDescription.classList.add("small");
 
     let generos = [];
-    videojuego.genres.forEach((genero) => generos.push(genero));
+    videojuego.genres.forEach((genero) => generos.push(genero.name));
     let tags = [];
-    videojuego.tags.forEach((tag) => tags.push(tag));
+    videojuego.tags.forEach((tag) => tags.push(tag.name));
 
     const productFeatures = [
-      videojuego.data.released,
+      videojuego.released,
       generos.join(" "),
       tags.join(" "),
     ];
@@ -93,17 +96,25 @@ const mostrarCarrito = (videojuegosEnCarrito) => {
       productDescription.appendChild(productFeature);
     }
 
+    const contenderoDescripcion =  document.createElement("div")
+    const descripcion = document.createElement("p")
+    descripcion.innerHTML = videojuego.description.slice(0, 190) + " ...";
+
+    contenderoDescripcion.appendChild(descripcion);
+
+    productDescription.appendChild(contenderoDescripcion);
+
     productInformationColumn.appendChild(productDescription);
 
     const price = document.createElement("h4");
     price.classList.add("mb-1");
     price.classList.add("me-1");
-    price.textContent = "$" + videojuego.data.precio;
+    price.textContent = "$" + videojuego.precio;
     priceAndButtonsColumn.appendChild(price);
 
     const oldPrice = document.createElement("span");
     oldPrice.classList.add("text-danger");
-    oldPrice.textContent = `<s>${videojuego.data.precio * 1.17}</s>`;
+    oldPrice.innerHTML = `<s>$${(videojuego.precio * 1.17).toFixed(2)}</s>`;
     priceAndButtonsColumn.appendChild(oldPrice);
 
     const freeShipping = document.createElement("h6");
@@ -113,8 +124,10 @@ const mostrarCarrito = (videojuegosEnCarrito) => {
 
     const detailsButton = document.createElement("button");
     detailsButton.classList.add("btn");
-    detailsButton.classList.add("btn-primary");
+    detailsButton.classList.add("btn-generico");
     detailsButton.classList.add("btn-sm");
+    detailsButton.setAttribute("data-id", videojuego.id);
+    detailsButton.addEventListener("click", videojuegoAMostrar);
     detailsButton.textContent = "Ver más";
     priceAndButtonsColumn.appendChild(detailsButton);
 
@@ -130,36 +143,62 @@ const mostrarCarrito = (videojuegosEnCarrito) => {
     row.appendChild(priceAndButtonsColumn);
 
     cardBody.appendChild(row);
-
     card.appendChild(cardBody);
-
     contenedorCarrito.appendChild(card);
-    const elemento = document.createElement("div");
-    const pTag = document.createElement("p");
-    const nombre = videojuego.name;
-    pTag.innerHTML = nombre;
-    elemento.appendChild(pTag);
-    contenedorCarrito.appendChild(elemento);
+    
   });
+
+    let precioTotal = 0;
+    videojuegosEnCarrito.forEach((juego) => {
+      precioTotal += +juego.precio;
+    });
+
+    const contenedorTotalizador = document.createElement("div");
+    contenedorTotalizador.className =
+      "d-flex py-4 bg-light mt-2 justify-content-around";
+
+    const btn_pagar = document.createElement("a");
+    btn_pagar.setAttribute("total", precioTotal.toFixed(2));
+    btn_pagar.classList = "btn btn-generico";
+    btn_pagar.innerHTML = "Finalizar compra"
+    btn_pagar.style.textDecoration = "none";
+    btn_pagar.href = "/frontend/src/components/pago-carrito.html";
+
+
+    const etiquetaTotal = document.createElement("h3");
+    etiquetaTotal.classList = "text-dark";
+    etiquetaTotal.classList = "px-5";
+    etiquetaTotal.innerHTML = "Total a pagar: $" + precioTotal.toFixed(2);
+
+    contenedorTotalizador.appendChild(btn_pagar);
+    contenedorTotalizador.appendChild(etiquetaTotal);
+
+    contenedorCarrito.appendChild(contenedorTotalizador);
+
 };
 
 
-const obtenerInformacionUnJuego = async (id) => {
-  await axios.get(`https://api.rawg.io/api/games/${id}?key=${key_api_carrito}`)
-    .then((response) => response.data )
-    .then( data=> videojuegosEnCarrito.push(data))
-    .catch((error) => console.error(error));
-};
-
-const obtenerVidejuegosCarrito = async () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (user !== null) {
-    const carrito = user.carrito;
-    for(const videojuego of carrito){
-      await obtenerInformacionUnJuego(videojuego);
-    };
+const obtenerJuegoPorId = async (id) => {
+  const { data, status } = await axios.get(
+    `https://api.rawg.io/api/games/${id}?key=${key_api_carrito}`
+  );
+  if (status === 200) {
+    return data;
   }
 };
 
-obtenerVidejuegosCarrito()
-mostrarCarrito(videojuegosEnCarrito);
+
+const videojuegoAMostrar = async (e) => {
+  e.preventDefault();
+  const elemento = e.target;
+  const idABuscar = elemento.getAttribute("data-id");
+  console.log(idABuscar);
+  const juego = await obtenerJuegoPorId(idABuscar);
+  const juegoStr = JSON.stringify(juego);
+  localStorage?.removeItem("videojuegoAmostrar");
+  localStorage.setItem("videojuegoAmostrar", juegoStr);
+  window.location.href = "/frontend/src/components/videojuego.html";
+};
+
+
+mostrarCarrito();

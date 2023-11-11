@@ -10,8 +10,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  /*Setear backgroud img una vez que se vincule*/
-  /* background-image: url(/frontend/src/img/fondo.jpg); */
+    background-image: linear-gradient(to bottom,
+        #280e5d,
+       #0000000A),url(/frontend/src/img/logo-portada-sm.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

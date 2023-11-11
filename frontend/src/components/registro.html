@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/frontend/src/css/registro.css">
+  <link rel="stylesheet" href="../css/registro.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-  
+
   <title>Registro</title>
 </head>
 
@@ -40,60 +40,61 @@
       <p class="cuenta-gratis">Crear una cuenta gratis</p>
 
       <div class="formulario_grupo " id="grupo_nombre">
-      <div id="nombre">
-        <input type="text" placeholder="Nombre" name="nombre" id="nombre">
+        <div id="nombre">
+          <input type="text" placeholder="Nombre" name="nombre" id="nombre">
+        </div>
+        <p class="formulario_input_error">El nombre solo puede contener letras </p>
       </div>
-      <p class="formulario_input_error">El nombre solo puede contener letras </p>
-    </div>
 
-    <div class="formulario_grupo " id="grupo_apellido">
-      <div id="apellido">
-        <input type="text" placeholder="apellido" name="apellido" id="apellido">
+      <div class="formulario_grupo " id="grupo_apellido">
+        <div id="apellido">
+          <input type="text" placeholder="apellido" name="apellido" id="apellido">
+        </div>
+        <p class="formulario_input_error">El apellido solo puede contener letras </p>
       </div>
-      <p class="formulario_input_error">El apellido solo puede contener letras </p>
-    </div>
 
-    <div class="formulario_grupo " id="grupo_username">
-      <div id="username">
-        <input type="text" placeholder="username" name="username" id="username">
+      <div class="formulario_grupo " id="grupo_username">
+        <div id="username">
+          <input type="text" placeholder="username" name="username" id="username">
+        </div>
+        <p class="formulario_input_error">Minimo 4 caracteres, puede llevar letras, numeros, guion y guion_bajo </p>
       </div>
-      <p class="formulario_input_error">Minimo 4 caracteres,  puede llevar letras, numeros, guion y guion_bajo </p>
-    </div>
 
 
 
-    <div class="formulario_grupo " id="grupo_tel">
-      <div id="tel">
-        <input type="tel" placeholder="tel" name="tel" id="tel">
+      <div class="formulario_grupo " id="grupo_tel">
+        <div id="tel">
+          <input type="tel" placeholder="tel" name="tel" id="tel">
+        </div>
+        <p class="formulario_input_error">Numero de telefono invalido </p>
       </div>
-      <p class="formulario_input_error">Numero de telefono invalido </p>
-    </div>
 
 
-    <div class="formulario_grupo " id="grupo_email">
-      <div id="email">
-        <input type="text" placeholder="email" name="email" id="email">
+      <div class="formulario_grupo " id="grupo_email">
+        <div id="email">
+          <input type="text" placeholder="email" name="email" id="email">
+        </div>
+        <p class="formulario_input_error"> Introduce una dirección de correo electrónico válida </p>
       </div>
-      <p class="formulario_input_error"> Introduce una dirección de correo electrónico válida </p>
-    </div>
-    
-    
-    <div class="formulario_grupo " id="grupo_contraseña">
-      <div id="contraseña">
-        <input type="password" placeholder="contraseña" name="contraseña" id="contraseña">
-      </div>
-      <p class="formulario_input_error">La contraseña debe contener al menos 4 caracteres</p>
-    </div>
-      
-      
-     
-      
-     
 
-      <input type="submit" class="sign-up-btn" value="Registrarse" onclick="checkPass()">
+
+      <div class="formulario_grupo " id="grupo_contraseña">
+        <div id="contraseña">
+          <input type="password" placeholder="contraseña" name="contraseña" id="password">
+        </div>
+        <p class="formulario_input_error">La contraseña debe contener al menos 4 caracteres</p>
+      </div>
+
+
+
+
+
+
+      <input type="submit" class="sign-up-btn" value="Registrarse">
     </form>
 
   </div>
-  <script src="/frontend/src/components/js/registro.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../servicios/regstro.js"></script>
 
 </html>

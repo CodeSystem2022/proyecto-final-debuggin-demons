@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 0s 6000000s, color 0s 6000000s;
@@ -14,7 +15,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/frontend/src/img/fondo.jpg);
+    background-image: linear-gradient(to bottom,
+          #280e5d,
+          #0000000A), url(/frontend/src/img/logo-portada-sm.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -199,13 +202,13 @@ a:active {
 
   }
 
-  
+
 
   .container-form {
     z-index: 100;
     display: block;
     align-items: center;
-    
+
   }
 
   .welcome-back {
